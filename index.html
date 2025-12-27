@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RxBox</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+        
+        </div>
+        <div class="game-area">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+        
+        <div class="control-panel">
+            <div class="info-bar">
+                <span id="coords">x0, y0</span>
+                <span id="pixels">Pxls:0</span>
+                <span id="fps">30fps</span>
+                <span id="particles">0</span>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-pause" id="pauseBtn">PAUSE</button>
+                <button class="btn-play" id="playBtn">></button>
+                <button class="btn-zoom-out" id="zoomOutBtn">-</button>
+                <button class="btn-zoom-in" id="zoomInBtn">+</button>
+                <button class="btn-reset" id="clearBtn">RESET</button>
+                <button class="btn-replace" id="replaceBtn">REPLACE</button>
+                <button class="btn-erase" id="eraseBtn">E</button>
+                <button class="btn-tps" id="tpsBtn">Tps</button>
+                <button class="btn-info" id="infoBtn">INFO</button>
+                <button class="btn-saves" id="savesBtn">SAVES</button>
+                <button class="btn-mods" id="modsBtn">MODS</button>
+                <button class="btn-settings" id="settingsBtn">SETTINGS</button>
+            </div>
+            
+            <div class="material-categories">
+                <div class="category active" data-category="land">LAND</div>
+                <div class="category" data-category="liquids">LIQUIDS</div>
+                <div class="category" data-category="life">LIFE</div>
+                <div class="category" data-category="powders">POWDERS</div>
+                <div class="category" data-category="solids">SOLIDS</div>
+                <div class="category" data-category="energy">ENERGY</div>
+                <div class="category" data-category="weapons">WEAPONS</div>
+                <div class="category" data-category="gases">GASES</div>
+                <div class="category" data-category="food">FOOD</div>
+                <div class="category" data-category="machines">MACHINES</div>
+                <div class="category" data-category="special">SPECIAL</div>
+                <div class="category" data-category="plants">PLANTS</div>
+                <div class="category" data-category="electronics">ELECTRONICS</div>
+                <div class="category" data-category="decoration">DECORATION</div>
+                <div class="category" data-category="organic">ORGANIC</div>
+            </div>
+            
+            <div class="material-buttons">
+                <div class="material-category" id="land-materials">
+                    <button class="material-btn active" data-material="sand">SAND</button>
+                    <button class="material-btn" data-material="dirt">DIRT</button>
+                    <button class="material-btn" data-material="mud">MUD</button>
+                    <button class="material-btn" data-material="wetsand">WETSAND</button>
+                    <button class="material-btn" data-material="stone">ROCK</button>
+                    <button class="material-btn" data-material="rockwall">ROCKWALL</button>
+                    <button class="material-btn" data-material="mudstone">MUDSTONE</button>
+                    <button class="material-btn" data-material="packedsand">PACKEDSAND</button>
+                    <button class="material-btn" data-material="snow">SNOW</button>
+                    <button class="material-btn" data-material="gravel">GRAVEL</button>
+                    <button class="material-btn" data-material="clay">CLAY</button>
+                    <button class="material-btn" data-material="claysoil">CLAYSOIL</button>
+                    <button class="material-btn" data-material="permafrost">PERMAFROST</button>
+                    <button class="material-btn" data-material="mycelium">MYCELIUM</button>
+                    <button class="material-btn" data-material="mulch">MULCH</button>
+                    <button class="material-btn" data-material="basalt">BASALT</button>
+                    <button class="material-btn" data-material="tuff">TUFF</button>
+                    <button class="material-btn" data-material="limestone">LIMESTONE</button>
+                </div>
+                
+                <div class="material-category" id="liquids-materials" style="display: none;">
+                    <button class="material-btn" data-material="water">WATER</button>
+                    <button class="material-btn" data-material="lava">LAVA</button>
+                    <button class="material-btn" data-material="oil">OIL</button>
+                    <button class="material-btn" data-material="acid">ACID</button>
+                    <button class="material-btn" data-material="mercury">MERCURY</button>
+                    <button class="material-btn" data-material="blood">BLOOD</button>
+                    <button class="material-btn" data-material="milk">MILK</button>
+                    <button class="material-btn" data-material="honey">HONEY</button>
+                    <button class="material-btn" data-material="syrup">SYRUP</button>
+                    <button class="material-btn" data-material="alcohol">ALCOHOL</button>
+                    <button class="material-btn" data-material="nitrogen">LIQNITRO</button>
+                    <button class="material-btn" data-material="hydrogen">LIQHYDRO</button>
+                    <button class="material-btn" data-material="oxygen">LIQOXY</button>
+                    <button class="material-btn" data-material="helium">LIQHELIUM</button>
+                    <button class="material-btn" data-material="neon">LIQNEON</button>
+                </div>
+                
+                <div class="material-category" id="powders-materials" style="display: none;">
+                    <button class="material-btn" data-material="sand">SAND</button>
+                    <button class="material-btn" data-material="salt">SALT</button>
+                    <button class="material-btn" data-material="sugar">SUGAR</button>
+                    <button class="material-btn" data-material="gunpowder">GUNPOWDER</button>
+                    <button class="material-btn" data-material="ash">ASH</button>
+                    <button class="material-btn" data-material="flour">FLOUR</button>
+                    <button class="material-btn" data-material="cement">CEMENT</button>
+                    <button class="material-btn" data-material="dust">DUST</button>
+                    <button class="material-btn" data-material="pollen">POLLEN</button>
+                    <button class="material-btn" data-material="spores">SPORES</button>
+                    <button class="material-btn" data-material="powder">POWDER</button>
+                    <button class="material-btn" data-material="pepper">PEPPER</button>
+                    <button class="material-btn" data-material="cocoa">COCOA</button>
+                    <button class="material-btn" data-material="coffee">COFFEE</button>
+                    <button class="material-btn" data-material="tea">TEA</button>
+                </div>
+                
+                <div class="material-category" id="energy-materials" style="display: none;">
+                    <button class="material-btn" data-material="fire">FIRE</button>
+                    <button class="material-btn" data-material="plasma">PLASMA</button>
+                    <button class="material-btn" data-material="lightning">LIGHTNING</button>
+                    <button class="material-btn" data-material="electricity">ELECTRICITY</button>
+                </div>
+                
+                <div class="material-category" id="gases-materials" style="display: none;">
+                    <button class="material-btn" data-material="air">AIR</button>
+                    <button class="material-btn" data-material="steam">STEAM</button>
+                    <button class="material-btn" data-material="smoke">SMOKE</button>
+                    <button class="material-btn" data-material="gas">GAS</button>
+                    <button class="material-btn" data-material="oxygen">OXYGEN</button>
+                    <button class="material-btn" data-material="nitrogen">NITROGEN</button>
+                    <button class="material-btn" data-material="hydrogen">HYDROGEN</button>
+                    <button class="material-btn" data-material="helium">HELIUM</button>
+                    <button class="material-btn" data-material="neon">NEON</button>
+                    <button class="material-btn" data-material="argon">ARGON</button>
+                    <button class="material-btn" data-material="co2">CO2</button>
+                    <button class="material-btn" data-material="methane">METHANE</button>
+                </div>
+                
+                <div class="material-category" id="weapons-materials" style="display: none;">
+                    <button class="material-btn" data-material="bullet">BULLET</button>
+                    <button class="material-btn" data-material="laser">LASER</button>
+                    <button class="material-btn" data-material="plasma">PLASMA</button>
+                    <button class="material-btn" data-material="missile">MISSILE</button>
+                    <button class="material-btn" data-material="bomb">BOMB</button>
+                    <button class="material-btn" data-material="grenade">GRENADE</button>
+                    <button class="material-btn" data-material="rocket">ROCKET</button>
+                    <button class="material-btn" data-material="arrow">ARROW</button>
+                    <button class="material-btn" data-material="shuriken">SHURIKEN</button>
+                    <button class="material-btn" data-material="dart">DART</button>
+                </div>
+                
+                <div class="material-category" id="tools-materials" style="display: none;">
+                    <button class="material-btn" data-material="hammer">HAMMER</button>
+                    <button class="material-btn" data-material="wrench">WRENCH</button>
+                    <button class="material-btn" data-material="screwdriver">SCREWDRIVER</button>
+                    <button class="material-btn" data-material="drill">DRILL</button>
+                    <button class="material-btn" data-material="saw">SAW</button>
+                    <button class="material-btn" data-material="axe">AXE</button>
+                    <button class="material-btn" data-material="pickaxe">PICKAXE</button>
+                    <button class="material-btn" data-material="shovel">SHOVEL</button>
+                    <button class="material-btn" data-material="pliers">PLIERS</button>
+                    <button class="material-btn" data-material="welder">WELDER</button>
+                    <button class="material-btn" data-material="torch">TORCH</button>
+                    <button class="material-btn" data-material="paintbrush">PAINTBRUSH</button>
+                    <button class="material-btn" data-material="spray">SPRAY</button>
+                    <button class="material-btn" data-material="glue">GLUE</button>
+                    <button class="material-btn" data-material="tape">TAPE</button>
+                </div>
+                
+                <div class="material-category" id="food-materials" style="display: none;">
+                    <button class="material-btn" data-material="raw_chicken">RAWCHICKEN</button>
+                    <button class="material-btn" data-material="cooked_chicken">CHICKEN</button>
+                    <button class="material-btn" data-material="beef">BEEF</button>
+                    <button class="material-btn" data-material="pork">PORK</button>
+                    <button class="material-btn" data-material="fish">FISH</button>
+                    <button class="material-btn" data-material="bread">BREAD</button>
+                    <button class="material-btn" data-material="cheese">CHEESE</button>
+                    <button class="material-btn" data-material="egg">EGG</button>
+                    <button class="material-btn" data-material="bacon">BACON</button>
+                    <button class="material-btn" data-material="pizza">PIZZA</button>
+                    <button class="material-btn" data-material="burger">BURGER</button>
+                    <button class="material-btn" data-material="pasta">PASTA</button>
+                    <button class="material-btn" data-material="rice">RICE</button>
+                    <button class="material-btn" data-material="potato">POTATO</button>
+                    <button class="material-btn" data-material="carrot">CARROT</button>
+                    <button class="material-btn" data-material="apple">APPLE</button>
+                    <button class="material-btn" data-material="banana">BANANA</button>
+                    <button class="material-btn" data-material="orange">ORANGE</button>
+                    <button class="material-btn" data-material="grape">GRAPE</button>
+                    <button class="material-btn" data-material="strawberry">STRAWBERRY</button>
+                </div>
+                
+                <div class="material-category" id="plants-materials" style="display: none;">
+                    <button class="material-btn" data-material="grass">GRASS</button>
+                    <button class="material-btn" data-material="tree">TREE</button>
+                    <button class="material-btn" data-material="flower">FLOWER</button>
+                    <button class="material-btn" data-material="bush">BUSH</button>
+                    <button class="material-btn" data-material="vine">VINE</button>
+                    <button class="material-btn" data-material="moss">MOSS</button>
+                    <button class="material-btn" data-material="fern">FERN</button>
+                    <button class="material-btn" data-material="cactus">CACTUS</button>
+                    <button class="material-btn" data-material="bamboo">BAMBOO</button>
+                    <button class="material-btn" data-material="seaweed">SEAWEED</button>
+                    <button class="material-btn" data-material="coral">CORAL</button>
+                    <button class="material-btn" data-material="mushroom">MUSHROOM</button>
+                    <button class="material-btn" data-material="wheat">WHEAT</button>
+                    <button class="material-btn" data-material="corn">CORN</button>
+                    <button class="material-btn" data-material="pumpkin">PUMPKIN</button>
+                    <button class="material-btn" data-material="tomato">TOMATO</button>
+                    <button class="material-btn" data-material="lettuce">LETTUCE</button>
+                    <button class="material-btn" data-material="onion">ONION</button>
+                    <button class="material-btn" data-material="garlic">GARLIC</button>
+                </div>
+                
+                <div class="material-category" id="electronics-materials" style="display: none;">
+                    <button class="material-btn" data-material="wire">WIRE</button>
+                    <button class="material-btn" data-material="circuit">CIRCUIT</button>
+                    <button class="material-btn" data-material="chip">CHIP</button>
+                    <button class="material-btn" data-material="battery">BATTERY</button>
+                    <button class="material-btn" data-material="screen">SCREEN</button>
+                    <button class="material-btn" data-material="keyboard">KEYBOARD</button>
+                    <button class="material-btn" data-material="mouse">MOUSE</button>
+                    <button class="material-btn" data-material="speaker">SPEAKER</button>
+                    <button class="material-btn" data-material="microphone">MICROPHONE</button>
+                    <button class="material-btn" data-material="camera">CAMERA</button>
+                    <button class="material-btn" data-material="phone">PHONE</button>
+                    <button class="material-btn" data-material="tablet">TABLET</button>
+                    <button class="material-btn" data-material="laptop">LAPTOP</button>
+                    <button class="material-btn" data-material="router">ROUTER</button>
+                    <button class="material-btn" data-material="modem">MODEM</button>
+                    <button class="material-btn" data-material="server">SERVER</button>
+                    <button class="material-btn" data-material="robot">ROBOT</button>
+                    <button class="material-btn" data-material="drone">DRONE</button>
+                    <button class="material-btn" data-material="sensor">SENSOR</button>
+                </div>
+                
+                <div class="material-category" id="decoration-materials" style="display: none;">
+                    <button class="material-btn" data-material="glass">GLASS</button>
+                    <button class="material-btn" data-material="mirror">MIRROR</button>
+                    <button class="material-btn" data-material="lamp">LAMP</button>
+                    <button class="material-btn" data-material="painting">PAINTING</button>
+                    <button class="material-btn" data-material="sculpture">SCULPTURE</button>
+                    <button class="material-btn" data-material="vase">VASE</button>
+                    <button class="material-btn" data-material="rug">RUG</button>
+                    <button class="material-btn" data-material="curtain">CURTAIN</button>
+                    <button class="material-btn" data-material="pillow">PILLOW</button>
+                    <button class="material-btn" data-material="clock">CLOCK</button>
+                    <button class="material-btn" data-material="frame">FRAME</button>
+                    <button class="material-btn" data-material="candle">CANDLE</button>
+                    <button class="material-btn" data-material="chandelier">CHANDELIER</button>
+                    <button class="material-btn" data-material="fountain">FOUNTAIN</button>
+                    <button class="material-btn" data-material="statue">STATUE</button>
+                    <button class="material-btn" data-material="monument">MONUMENT</button>
+                    <button class="material-btn" data-material="sign">SIGN</button>
+                    <button class="material-btn" data-material="banner">BANNER</button>
+                    <button class="material-btn" data-material="flag">FLAG</button>
+                </div>
+                
+                <div class="material-category" id="organic-materials" style="display: none;">
+                    <button class="material-btn" data-material="bone">BONE</button>
+                    <button class="material-btn" data-material="meat">MEAT</button>
+                    <button class="material-btn" data-material="fat">FAT</button>
+                    <button class="material-btn" data-material="skin">SKIN</button>
+                    <button class="material-btn" data-material="hair">HAIR</button>
+                    <button class="material-btn" data-material="feather">FEATHER</button>
+                    <button class="material-btn" data-material="scale">SCALE</button>
+                    <button class="material-btn" data-material="shell">SHELL</button>
+                    <button class="material-btn" data-material="horn">HORN</button>
+                    <button class="material-btn" data-material="tusk">TUSK</button>
+                    <button class="material-btn" data-material="claw">CLAW</button>
+                    <button class="material-btn" data-material="tooth">TOOTH</button>
+                    <button class="material-btn" data-material="fur">FUR</button>
+                    <button class="material-btn" data-material="leather">LEATHER</button>
+                    <button class="material-btn" data-material="silk">SILK</button>
+                    <button class="material-btn" data-material="wool">WOOL</button>
+                    <button class="material-btn" data-material="cotton">COTTON</button>
+                    <button class="material-btn" data-material="linen">LINEN</button>
+                    <button class="material-btn" data-material="hemp">HEMP</button>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="https://www.reddit.com/r/Rxlok/" target="_blank" class="link">Reddit</a>
+            </div>
+            
+            <div class="copyright">
+                <span>2025-2025. All Rights Reserved. RxBox</span>
+            </div>
+            
+            <div class="language-selector">
+                <select id="languageSelect">
+                    <option value="en">English (American)</option>
+                    <option value="en-uk">English (British)</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ru">Russian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="zh">Chinese</option>
+                    <option value="ko">Korean</option>
+                    <option value="ar">Arabic</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
